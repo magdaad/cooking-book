@@ -2,12 +2,12 @@ import React from 'react';
 import './IngredientList.scss'
 import Ingredient from "../Ingredient/Ingredient";
 
-const IngredientList = () => {
+const IngredientList = ({ingredients}) => {
   return(
       <ul className={"ingredients"}>
-        <Ingredient />
-        <Ingredient />
-        <Ingredient />
+          {ingredients.map((ingredient, i) => (
+              <Ingredient key={i} {...ingredient}/>
+          ))}
       </ul>
   );
 }

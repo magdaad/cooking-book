@@ -1,9 +1,9 @@
 import React from 'react';
 import './Ingredient.scss'
 
-const Ingredient = () => {
+const Ingredient = ({quantity, name, type}) => {
   return(
-      <li>składnik</li>
+      <li>{quantity}{name}{type}</li>
   );
 }
 

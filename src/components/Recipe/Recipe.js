@@ -3,12 +3,16 @@ import './Recipe.scss'
 import IngredientList from "../IngredientList/IngredientList";
 import Instruction from "../Instruction/Instruction";
 
-const Recipe = () => {
+const Recipe = ({
+                    name,
+                    ingredients,
+                    steps,
+                }) => {
   return(
       <>
-        <h2>FOOD NAME</h2>
-        <IngredientList />
-        <Instruction />
+        <h2>{name}</h2>
+        <IngredientList ingredients = {ingredients}/>
+        <Instruction steps={steps}/>
       </>
   );
 }

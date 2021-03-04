@@ -1,11 +1,15 @@
 import React from 'react';
 import './Instruction.scss'
 
-const Instruction = () => {
+const Instruction = ({steps}) => {
   return(
-      <div>
-        <p>Instrukcja przygotowania</p>
-      </div>
+        <div>
+            <h3>Preparation:</h3>
+            {steps.map(step=>
+            <p>
+                {step}
+            </p>)}
+        </div>
   );
 }
 

@@ -11,7 +11,7 @@ function App() {
             recipesData.map(recipe =>
                 <Recipe
                     key={recipe.id}
-                    // {...recipe}
+                    {...recipe}
                 />
             )
         }
