@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Form} from "react-bootstrap";
 
-export const Step = ({initialValue, id, onChange = f => f}) => {
+export const SingleStep = ({initialValue, id, onChange = f => f}) => {
     const [value, setValue] = useState({
         id: id,
         data: initialValue

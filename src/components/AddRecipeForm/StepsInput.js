@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Button, Form} from "react-bootstrap";
-import {Step} from "./Step";
+import {SingleStep} from "./SingleStep";
 import { v4 } from "uuid";
 
 export const StepsInput = ({onChangeSteps = f => f}) => {
@@ -33,7 +33,7 @@ export const StepsInput = ({onChangeSteps = f => f}) => {
             <Form.Label>Steps</Form.Label>
             {
                 stepsData.map(input =>
-                    <Step
+                    <SingleStep
                         key = {input.id}
                         initialValue = ""
                         id = {input.id}

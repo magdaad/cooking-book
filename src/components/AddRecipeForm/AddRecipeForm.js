@@ -1,34 +1,29 @@
-import React, {useState, useEffect} from 'react';
-import {Form, Button, Col} from "react-bootstrap";
+import React, {useState} from 'react';
+import {Form, Button} from "react-bootstrap";
 import {useRecipes} from "../../context/RecipesContext";
 import {useInput} from "../../hooks/useInput";
 import {StepsInput} from "./StepsInput";
+import {IngredientInput} from "./IngredientInput";
 
 const AddRecipeForm = () => {
     const {addRecipe} = useRecipes();
     const [nameProps] = useInput("");
     const [steps, setSteps]  = useState([]);
+    const [ingredients, setIngredients]  = useState([]);
 
     const updateSteps = (newSteps) => {
         setSteps(newSteps);
+    }
+
+    const updateIngredients = (newIngredients) => {
+        setIngredients(newIngredients);
     }
 
     const submit = event => {
         event.preventDefault();
         addRecipe(
             nameProps.value,
-            [
-                {
-                "quantity": "1 lb",
-                "name": " asparagus",
-                "type": "Produce"
-                },
-                {
-                "quantity": "1 lb",
-                "name": " asparagus",
-                "type": "Produce"
-                },
-            ],
+            ingredients,
             steps.map(step => step.data)
         );
     };
@@ -44,29 +39,7 @@ const AddRecipeForm = () => {
                 />
             </Form.Group>
 
-            <Form.Group >
-                <Form.Label>Ingredients</Form.Label>
-                <Form.Row>
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>name</Form.Label>
-                        <Form.Control />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label>quantity</Form.Label>
-                        <Form.Control />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>type</Form.Label>
-                        <Form.Control />
-                    </Form.Group>
-                </Form.Row>
-                <Button variant="primary">
-                    Add Ingredient
-                </Button>
-            </Form.Group>
-
+            <IngredientInput onChangeIngredients={updateIngredients}/>
             <StepsInput onChangeSteps={updateSteps} />
 
 
