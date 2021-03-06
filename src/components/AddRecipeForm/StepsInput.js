@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Button, Form} from "react-bootstrap";
 import {Step} from "./Step";
 import { v4 } from "uuid";
@@ -14,6 +14,7 @@ export const StepsInput = ({onChangeSteps = f => f}) => {
             ]
         );
     }
+
     const updateSteps = ({value}) => {
         setStepsData(
             stepsData.map(item =>
@@ -21,9 +22,13 @@ export const StepsInput = ({onChangeSteps = f => f}) => {
                     ? {...item, data : value.data}
                     : item
             ));
-        console.log(stepsData);
         onChangeSteps(stepsData);
     }
+    useEffect(() => {
+            console.log(stepsData)
+            onChangeSteps(stepsData);
+        }
+        ,[stepsData])
     return [
         <Form.Group >
             <Form.Label>Steps</Form.Label>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Form} from "react-bootstrap";
 
 export const Step = ({initialValue, id, onChange = f => f}) => {
@@ -11,8 +11,12 @@ export const Step = ({initialValue, id, onChange = f => f}) => {
             ...value,
             data: e.target.value,
         });
-        onChange({value});
     }
+    useEffect(() => {
+        console.log(value)
+        onChange({value})}
+        ,[value])
+
 
     return (
         <Form.Control

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Form, Button, Col} from "react-bootstrap";
 import {useRecipes} from "../../context/RecipesContext";
 import {useInput} from "../../hooks/useInput";
@@ -11,7 +11,6 @@ const AddRecipeForm = () => {
 
     const updateSteps = (newSteps) => {
         setSteps(newSteps);
-        console.log(newSteps);
     }
 
     const submit = event => {
