@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Form, Button} from "react-bootstrap";
 import {useRecipes} from "../../context/RecipesContext";
 import {useInput} from "../../hooks/useInput";
@@ -7,7 +7,7 @@ import {IngredientInput} from "./IngredientInput";
 
 const AddRecipeForm = () => {
     const {addRecipe} = useRecipes();
-    const [nameProps] = useInput("");
+    const [nameProps, resetName] = useInput("");
     const [steps, setSteps]  = useState([]);
     const [ingredients, setIngredients]  = useState([]);
 
@@ -26,6 +26,9 @@ const AddRecipeForm = () => {
             ingredients,
             steps.map(step => step.data)
         );
+        resetName();
+        setSteps([]);
+        setIngredients([]);
     };
 
     return(
@@ -41,7 +44,6 @@ const AddRecipeForm = () => {
 
             <IngredientInput onChangeIngredients={updateIngredients}/>
             <StepsInput onChangeSteps={updateSteps} />
-
 
             <Button variant="success" type="submit">
                 Submit

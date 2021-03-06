@@ -37,10 +37,23 @@ export const IngredientInput = ({onChangeIngredients = f => f}) => {
             ));
         onChangeIngredients(ingredientsData);
     }
+
+    const reset = () => {
+        setIngredientsData([
+            {
+                id: v4(),
+                quantity: "",
+                name: "",
+                type: ""
+            }]
+        )
+    }
+
     useEffect(() => {
             onChangeIngredients(ingredientsData);
         }
         ,[ingredientsData])
+
     return [
         <Form.Group >
             <Form.Label>Ingredients</Form.Label>

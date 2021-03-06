@@ -33,19 +33,18 @@ export const SingleIngredient = ({initialValue, id, onChange = f => f}) => {
 
     return (
         <Form.Group >
-            <Form.Label>Ingredients</Form.Label>
             <Form.Row>
-                <Form.Group as={Col} controlId="formGridCity">
+                <Form.Group as={Col} >
                     <Form.Label>name</Form.Label>
                     <Form.Control onChange = {handleNameChange} />
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridState">
+                <Form.Group as={Col} >
                     <Form.Label>quantity</Form.Label>
                     <Form.Control onChange = {handleQuantityChange} />
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridZip">
+                <Form.Group as={Col} >
                     <Form.Label>type</Form.Label>
                     <Form.Control onChange = {handleTypeChange} />
                 </Form.Group>
