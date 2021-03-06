@@ -1,14 +1,14 @@
 import './App.scss';
-import React, {useContext} from "react";
+import React from "react";
 import Recipe from "./components/Recipe/Recipe";
-import {RecipesContext} from "./context/RecipesContext";
+import {useRecipes} from "./context/RecipesContext";
 
 function App() {
-    const {recipesData}  = useContext(RecipesContext);
+    const {recipes}  = useRecipes();
     return (
     <div className="App">
         {
-            recipesData.map(recipe =>
+            recipes.map(recipe =>
                 <Recipe
                     key={recipe.id}
                     {...recipe}
