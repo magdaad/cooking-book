@@ -30,6 +30,7 @@ export const StepsInput = ({onChangeSteps = f => f}) => {
             {
                 stepsData.map(input =>
                     <Step
+                        key = {input.id}
                         initialValue = ""
                         id = {input.id}
                         onChange={updateSteps}
