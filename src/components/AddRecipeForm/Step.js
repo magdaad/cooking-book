@@ -13,7 +13,6 @@ export const Step = ({initialValue, id, onChange = f => f}) => {
         });
     }
     useEffect(() => {
-        console.log(value)
         onChange({value})}
         ,[value])
 

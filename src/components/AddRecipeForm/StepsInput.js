@@ -25,7 +25,6 @@ export const StepsInput = ({onChangeSteps = f => f}) => {
         onChangeSteps(stepsData);
     }
     useEffect(() => {
-            console.log(stepsData)
             onChangeSteps(stepsData);
         }
         ,[stepsData])
