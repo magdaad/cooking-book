@@ -8,27 +8,20 @@ import {IngredientInput} from "./IngredientInput";
 const AddRecipeForm = () => {
     const {addRecipe} = useRecipes();
     const [nameProps, resetName] = useInput("");
-    const [steps, setSteps]  = useState([]);
-    const [ingredients, setIngredients]  = useState([]);
+    const [stepsProps, resetSteps]  = useInput("");
+    const [ingredientsProps, resetIngredients]  = useInput("");
 
-    const updateSteps = (newSteps) => {
-        setSteps(newSteps);
-    }
-
-    const updateIngredients = (newIngredients) => {
-        setIngredients(newIngredients);
-    }
 
     const submit = event => {
         event.preventDefault();
         addRecipe(
             nameProps.value,
-            ingredients,
-            steps.map(step => step.data)
+            ingredientsProps.value,
+            stepsProps.value,
         );
         resetName();
-        setSteps([]);
-        setIngredients([]);
+        resetSteps();
+        resetIngredients();
     };
 
     return(
@@ -41,9 +34,22 @@ const AddRecipeForm = () => {
                     placeholder="Food name"
                 />
             </Form.Group>
-
-            <IngredientInput onChangeIngredients={updateIngredients}/>
-            <StepsInput onChangeSteps={updateSteps} />
+            <Form.Group >
+                <Form.Label>Ingredients</Form.Label>
+                <Form.Control
+                    {...ingredientsProps}
+                    type="text"
+                    placeholder="Ingredients"
+                />
+            </Form.Group>
+            <Form.Group >
+                <Form.Label>Preparation steps</Form.Label>
+                <Form.Control
+                    {...stepsProps}
+                    type="text"
+                    placeholder="Preparation steps"
+                />
+            </Form.Group>
 
             <Button variant="success" type="submit">
                 Submit

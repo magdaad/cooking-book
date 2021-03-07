@@ -14,6 +14,7 @@ const Recipe = ({
     const { removeRecipe } = useRecipes();
     return(
       <>
+        <hr/>
         <h2>{name}</h2>
           <button onClick={() => removeRecipe(id)}>
               <FaTrash/>
