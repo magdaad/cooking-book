@@ -7,7 +7,9 @@ export const useRecipes = () => useContext(RecipesContext);
 
 export default function RecipesProvider({children}) {
     const [recipes, setRecipes] = useState(recipesData);
-
+    const [editMode, setEditMode] = useState(false);
+    const startEdit = () => setEditMode(true);
+    const stopEdit = () => setEditMode(false);
     const removeRecipe = id => setRecipes(recipes.filter(recipe => recipe.id !== id));
 
     const addRecipe = (recipeName, ingredients, steps) =>
@@ -21,8 +23,31 @@ export default function RecipesProvider({children}) {
             ...recipes
         ]);
 
+    const editRecipe = (id, recipeName, ingredients, steps) =>{
+        console.log(id, recipeName, ingredients, steps)
+        setRecipes(
+            recipes.map(recipe =>
+                recipe.id === id
+                    ? {...recipe,
+                        name: recipeName,
+                        ingredients: ingredients,
+                        steps: steps}
+                    : recipe
+            )
+        );
+        stopEdit();
+    }
+
+    const getRecipe = id => {
+        return recipes.find(recipe =>
+            recipe.id === id ? recipe : null
+        )
+    }
+
+
+
     return (
-        <RecipesContext.Provider value={{ recipes, removeRecipe, addRecipe }}>
+        <RecipesContext.Provider value={{ recipes, removeRecipe, addRecipe, getRecipe, editRecipe, editMode, startEdit, stopEdit }}>
             {children}
         </RecipesContext.Provider>
     );
